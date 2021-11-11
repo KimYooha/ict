@@ -1,7 +1,7 @@
 //const btn = document.getElementById("mic");
 const outputme = document.querySelector(".sent_box");
 const outputbot = document.querySelector(".recieve_box");
-const socket = io();
+//const socket = io();
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
