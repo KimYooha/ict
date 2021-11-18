@@ -1,4 +1,4 @@
-const { white } = require("colors");
+//const { white } = require("colors");
 
 var body_language_class
 var slides = document.querySelector('.slides'),

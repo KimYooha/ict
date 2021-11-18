@@ -20,6 +20,7 @@ var context
 //var context = 'projects/cookingchatbot/agent/sessions/5bd81f18-c941-4a8c-9e61-1b9be8c5ab20/contexts/cookingstep1-followup';
 var i=0
 
+
 const server = app.listen(
   PORT,
   console.log(
@@ -27,7 +28,7 @@ const server = app.listen(
       .bold
   )
 );
-console.log(context)
+
 const io = socketio(server);
 io.on("connection", function (socket) {
   console.log("a user connected");
@@ -72,21 +73,21 @@ io.on("connection", function (socket) {
         console.log("Detected intent");
         console.log(context)
         const result = responses[0].queryResult.fulfillmentText;
-        
+        settime = 0
         var intent = responses[0].queryResult.intent.displayName;
         if (intent.indexOf('step') != -1) {
           var context = responses[0].queryResult.outputContexts[0].name;
-        } else {
-          var time = responses[0].queryResult.parameters.fields.duration_kor.stringValue;
+        } else if (intent.indexOf('타이머') != -1){
+          settime = responses[0].queryResult.parameters.fields.duration_kor.stringValue;
         }
         socket.emit("bot reply", result);
         console.log(result);
         console.log('입력된 intent :' , intent)
-        console.log('타이머 시간:', time);
+        console.log('타이머 시간:', settime);
         console.log('입력된 context :' , context);
         
         
-        if (context.indexOf('step') != -1) {
+        if (intent.indexOf('step') != -1) {
           i += 1
         }
         
@@ -100,8 +101,11 @@ io.on("connection", function (socket) {
         console.log(error);
       }
     };
-
+    
     callapibot();
+    //console.log('왜 알아먹질 못하니',settime)
   });
+  
 });
+
 

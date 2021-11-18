@@ -1,4 +1,12 @@
-const startingMinutes = 0;
+//import time from "C:\Users\김가연\Desktop\Webspeech-AI-Bot-master\app.js"
+//settime = time.slice(0,str.length-1)
+// const {time} = require("C:\Users\김가연\Desktop\Webspeech-AI-Bot-master\app.js")
+// const time = time.slice(0,str.length-1)
+//console.log(time)
+
+const startingMinutes = 20;
+//startingMinutes = startingMinutes.slice(0,startingMinutes.length-1)
+console.log(startingMinutes)
 let time = startingMinutes * 60;
 
 const countdownEl = document.getElementById('countdown');
