@@ -74,8 +74,8 @@
         </div>
 
         <p class="controls">
-            <span class="prev" id = "prevbtn" >prev</span>
-            <span class="next" id = "nextbtn" >next</span>
+            <span class="prev" id = "prevbtn" onclick = "alert">prev</span>
+            <span class="next" id = "nextbtn" onclick = "alert">next</span>
         </p>
 
         <script src="js/recipe.js"></script>
@@ -96,8 +96,12 @@
               <div class="item" id='timer'>
                   Timer
                   <p id="countdown" onclick="stopCountdown()">0m 00s</p>
+                  <p id= "comment">Comment</p>
+                  <p id="alertbox_1"></p>
+                  <p id="alertbox_2"></p>
                   <script src="js/timer.js"></script>
               </div>
+
 
               <div class="item">
                 <div class="wrapper">
@@ -132,8 +136,7 @@
               </div>
 
 
-              <div class="item" id='recommed_question'
-                >
+              <div class="item" id='recommed_question'>
                   추천 질문
                   <div class="questionbox">
                       <p>재료 뭐였어?</p>

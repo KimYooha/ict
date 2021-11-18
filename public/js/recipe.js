@@ -1,3 +1,6 @@
+const { white } = require("colors");
+
+var body_language_class
 var slides = document.querySelector('.slides'),
     slide = document.querySelectorAll('.slides li'),
     currentIdx = 0,
@@ -40,19 +43,26 @@ socket.on('number', (msg) => {
   console.log("get number");
   console.log(msg);
   body_language_class = msg;
+  alert()
 });  
 
+// console.log(curyrentIdx)
+// console.log(body_language_class)
 
-if((currentIdx == 1) || (currentIdx == 2) || (currentIdx == 3)){
-  if((body_language_class == "put") || (body_language_class == "shake")){
-    console.log("wrong")
+function alert(){
+  if(((currentIdx == 1) || (currentIdx == 2) || (currentIdx == 3)) & ((body_language_class == "put") || (body_language_class == "shake"))){
+    document.getElementById('alertbox_1').innerHTML = '순서에 맞게 진행되고 있는지 확인해 주세요';
+    document.getElementById('alertbox_1').style.backgroundColor = "white";
   }
-}
-else if((currentIdx == 4) || (currentIdx == 5) || (currentIdx == 6) || (currentIdx == 7) || (currentIdx == 8)){
-  if((body_language_class == "cutting")){
-    console.log("wrong")
+  else if(((currentIdx == 4) || (currentIdx == 5) || (currentIdx == 6) || (currentIdx == 7) || (currentIdx == 8)) & (body_language_class == "cutting")){
+    document.getElementById('alertbox_1').innerHTML = '순서에 맞게 진행되고 있는지 확인해 주세요';
+    document.getElementById('alertbox_1').style.backgroundColor = "white";
   }
-}
+  else{
+    document.getElementById('alertbox_1').innerHTML = '잘 진행하고 계시네요!';
+    document.getElementById('alertbox_1').style.color = "white";
+  }
+};
 
 
 
