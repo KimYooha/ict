@@ -16,7 +16,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = process.env.PORT || 3000;
 const projectId = 'cookingchatbot'
-var context = 'projects/cookingchatbot/agent/sessions/5bd81f18-c941-4a8c-9e61-1b9be8c5ab20/contexts/cookingstep1-followup';
+var context
+//var context = 'projects/cookingchatbot/agent/sessions/5bd81f18-c941-4a8c-9e61-1b9be8c5ab20/contexts/cookingstep1-followup';
 var i=0
 
 const server = app.listen(
@@ -47,35 +48,45 @@ io.on("connection", function (socket) {
           keyFilename: "./cookingchatbot-ee82511365a7.json",
         });
         const sessionPath = sessionClient.projectAgentSessionPath(projectId, sessionId);
-        var context = 'projects/cookingchatbot/agent/sessions/5bd81f18-c941-4a8c-9e61-1b9be8c5ab20/contexts/cookingstep'+String(i)+'-followup';
+        var context = 'projects/cookingchatbot/agent/sessions/5bd81f18-c941-4a8c-9e61-1b9be8c5ab20/contexts/cookingstep'+String(i)+'-followup'
         const request = {
-          session: sessionPath,
-          queryInput: {
-            text: {
-              text: message,
-              languageCode: "ko-KR",
-            },
-          },
-          
-          queryParams: {
-            contexts: [
-            {
-            "name": context,
-            "lifespanCount": 9
-            },
-            ]
-            },
-        };
+           session: sessionPath,
+           queryInput: {
+             text: {
+               text: message,
+               languageCode: "ko-KR",
+             },
+           },
+            
+           queryParams: {
+             contexts: [
+             {
+             "name": context,
+             "lifespanCount": 9
+             },
+             ]
+             },
+         }
         const responses = await sessionClient.detectIntent(request);
 
         console.log("Detected intent");
         console.log(context)
         const result = responses[0].queryResult.fulfillmentText;
-        var context = responses[0].queryResult.outputContexts[0].name;
+        
+        var intent = responses[0].queryResult.intent.displayName;
+        if (intent.indexOf('step') != -1) {
+          var context = responses[0].queryResult.outputContexts[0].name;
+        } else {
+          var time = responses[0].queryResult.parameters.fields.duration_kor.stringValue;
+        }
         socket.emit("bot reply", result);
         console.log(result);
-        console.log(context);
-        if (context.indexOf('cookingstep') != -1) {
+        console.log('입력된 intent :' , intent)
+        console.log('타이머 시간:', time);
+        console.log('입력된 context :' , context);
+        
+        
+        if (context.indexOf('step') != -1) {
           i += 1
         }
         
