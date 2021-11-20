@@ -77,13 +77,14 @@ io.on("connection", function (socket) {
         var intent = responses[0].queryResult.intent.displayName;
         if (intent.indexOf('step') != -1) {
           var context = responses[0].queryResult.outputContexts[0].name;
-        } else if (intent.indexOf('타이머') != -1){
+        } else if (intent.indexOf('타이머') != -1) {
           settime = responses[0].queryResult.parameters.fields.duration_kor.stringValue;
+          console.log('타이머 시간:', settime);
         }
         socket.emit("bot reply", result);
         console.log(result);
         console.log('입력된 intent :' , intent)
-        console.log('타이머 시간:', settime);
+        
         console.log('입력된 context :' , context);
         
         
@@ -100,6 +101,7 @@ io.on("connection", function (socket) {
       } catch (error) {
         console.log(error);
       }
+    return settime
     };
     
     callapibot();
