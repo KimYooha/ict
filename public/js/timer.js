@@ -4,9 +4,23 @@
 // const time = time.slice(0,str.length-1)
 //console.log(time)
 
-const startingMinutes = 20;
+//var startingMinutes = 20
+
+let toggle = true;
+var startingMinutes;
+//time 받는 부분
+socket.on('settime', (settime) => {
+    console.log("get time");
+    console.log(settime);
+    //startingMinutes = settime.slice(0,startingMinutes.length-1);
+    
+    stopCountdown()
+  });
+
+
+
 //startingMinutes = startingMinutes.slice(0,startingMinutes.length-1)
-console.log(startingMinutes)
+
 let time = startingMinutes * 60;
 
 const countdownEl = document.getElementById('countdown');
@@ -26,7 +40,7 @@ function updateCountdown() {
 }
 
 
-let toggle = true;
+//let toggle = true;
 
 function stopCountdown() {
     
