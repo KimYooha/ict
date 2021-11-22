@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score # Accuracy metrics
 import pickle
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from playsound import playsound
 #get_ipython().system('pip install mediapipe opencv-python pandas scikit-learn')
 
 
@@ -158,9 +159,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
             #print("works")
             time_c = time.time() - start
             if time_c >= 10:
-                cv2.putText(image, 'EMERGENCY!'
-                            , (80, 270), cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255,0,0), 3, cv2.LINE_AA)
-                break
+                playsound("emergency_1.mp3")
         
         # pose_landmarks, left_hand_landmarks, right_hand_landmarks
         
