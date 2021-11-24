@@ -52,7 +52,7 @@ socket.on('number', (msg) => {
 
 function alert(){
   if(((currentIdx == 1) || (currentIdx == 2) || (currentIdx == 3)) & ((body_language_class == "put") || (body_language_class == "shake"))){
-    document.getElementById('alertbox_1').innerHTML = '순서에 맞게 진행되고 있는지 확인해 주세요';
+    document.getElementById('alertbox_1').innerHTML = '레시피순서에 맞게 진행되고 있는지 확인해 주세요';
     document.getElementById('alertbox_1').style.backgroundColor = "white";
     document.getElementById('alertbox_1').style.color = "red";
   }
