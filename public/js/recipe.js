@@ -57,7 +57,7 @@ function alert(){
     document.getElementById('alertbox_1').style.color = "red";
   }
   else if(((currentIdx == 4) || (currentIdx == 5) || (currentIdx == 6) || (currentIdx == 7) || (currentIdx == 8)) & (body_language_class == "cutting")){
-    document.getElementById('alertbox_1').innerHTML = '순서에 맞게 진행되고 있는지 확인해 주세요';
+    document.getElementById('alertbox_1').innerHTML = '레시피순서에 맞게 진행되고 있는지 확인해 주세요';
     document.getElementById('alertbox_1').style.backgroundColor = "white";
     document.getElementById('alertbox_1').style.color = "red";
   }
