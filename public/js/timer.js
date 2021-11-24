@@ -6,6 +6,7 @@
 
 //var startingMinutes = 20
 //var startingMinutes;
+const startingMinutes = 0;
 let toggle = true;
 
 
