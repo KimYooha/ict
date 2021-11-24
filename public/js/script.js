@@ -27,6 +27,7 @@ recognition.onresult = function (event) {
   socket.emit("chat message", text);
   } else {console.log('사용자명령 아님')}
   
+
 };
 
 const botReply = (text) => {
@@ -66,5 +67,6 @@ socket.on("bot reply", (text) => {
       document.getElementById('countdown').click();
     }
 });
+
 /*
 */

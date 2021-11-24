@@ -33,11 +33,18 @@ const io = socketio(server);
 io.on("connection", function (socket) {
   console.log("a user connected");
 
+
+
+  //제스쳐 보내는 부분
   socket.on('gesture', (msg) => {
     console.log("get file");
     console.log(msg);
     io.emit("number", msg);
-  });
+  });  
+
+
+
+  
 
   socket.on("chat message", (message) => {
     console.log(message);
@@ -78,8 +85,13 @@ io.on("connection", function (socket) {
         if (intent.indexOf('step') != -1) {
           var context = responses[0].queryResult.outputContexts[0].name;
         } else if (intent.indexOf('타이머') != -1) {
-          settime = responses[0].queryResult.parameters.fields.duration_kor.stringValue;
+          var settime = responses[0].queryResult.parameters.fields.duration_kor.stringValue;
           console.log('타이머 시간:', settime);
+          io.emit("gettime", settime);
+        } else if (intent.indexOf('유튜브') != -1) {
+          var play = true
+          console.log('영상재생:',play)
+          io.emit("youtube", play);
         }
         socket.emit("bot reply", result);
         console.log(result);
