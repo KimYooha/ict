@@ -13,6 +13,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from playsound import playsound
 #get_ipython().system('pip install mediapipe opencv-python pandas scikit-learn')
+import winsound as sd
+def beepsound():
+    fr = 2000    # range : 37 ~ 32767
+    du = 4000     # 1000 ms ==1second
+    sd.Beep(fr, du) # winsound.Beep(frequency, duration)
 
 
 # In[2]:
@@ -158,8 +163,9 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         while results.face_landmarks == None:
             #print("works")
             time_c = time.time() - start
-            if time_c >= 10:
-                playsound("emergency_1.mp3")
+            if time_c >= 180:
+                beepsound()
+                break
         
         # pose_landmarks, left_hand_landmarks, right_hand_landmarks
         
