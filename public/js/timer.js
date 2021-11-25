@@ -1,28 +1,16 @@
-//import time from "C:\Users\김가연\Desktop\Webspeech-AI-Bot-master\app.js"
-//settime = time.slice(0,str.length-1)
-// const {time} = require("C:\Users\김가연\Desktop\Webspeech-AI-Bot-master\app.js")
-// const time = time.slice(0,str.length-1)
-//console.log(time)
 
-//var startingMinutes = 20
-//var startingMinutes;
-const startingMinutes = 0;
 let toggle = true;
 
-
+socket.on('qbtn', (qbtn) => {
+    console.log('전송:',qbtn)
+    //text = qbtn
+    
+    //socket.emit("chat message", qbtn);
+  })
 const countdownEl = document.getElementById('countdown');
 let interval = setInterval(updateCountdown, 1000);
-//time 받는 부분
-/*
-socket.on('gettime', (settime) => {
-    console.log("get time");
-    console.log(settime);
-    
-    //startingMinutes = settime.slice(0,startingMinutes.length-1);
-    stopCountdown()
-  });
-*/
-var time
+let startingMinutes = 0
+let time = startingMinutes * 60;
 socket.on('gettime', (settime) => {
     console.log(settime);
     startingMinutes = settime.substring(0,settime.length-1);

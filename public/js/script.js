@@ -14,7 +14,14 @@ recognition.addEventListener("end", recognition.start);
 recognition.maxAlternatives = 5000;
 
 recognition.start();
-
+/*
+socket.on('qbtn', (qbtn) => {
+  console.log('전송:',qbtn)
+  //text = qbtn
+  
+  //socket.emit("chat message", qbtn);
+})
+*/
 recognition.onresult = function (event) {
   const last = event.results.length - 1;
   const text = event.results[last][0].transcript;

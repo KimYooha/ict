@@ -18,7 +18,7 @@ player = new YT.Player('player', {
         
     //    },
     playerVars:{
-    'autoplay' : 1,
+    //'autoplay' : 1,
     'controls' : 1,
     'loop' : 1,
     'origin': 'https://localhost:5000' 
